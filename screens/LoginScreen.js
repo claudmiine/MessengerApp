@@ -1,9 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { StyleSheet, View, Text } from 'react-native';
 import { Button, Input, Image } from 'react-native-elements';
 import { StatusBar } from 'expo-status-bar';
 
 const LoginScreen = () => {
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+
+
     return (
         <View>
             <StatusBar style="light" />
@@ -15,8 +19,14 @@ const LoginScreen = () => {
             />
             <View style={styles.inputContainer}>
             </View>
-            <Input placeholder="Email" autoFocus type="email" />
+            <Input 
+            placeholder="Email" 
+            autoFocus type="email" 
+            value={email} 
+            onChangeText={(text) => setEmail(text)} 
+            />
             <Input placeholder="Password" secureTextEntry type="password" />
+            {/* secureText allows us to hide password characters */}
         </View>
     );
 }
@@ -24,9 +34,10 @@ const LoginScreen = () => {
 
 export default LoginScreen;
 
+// styles for compos
 const styles = StyleSheet.create({
-    inputContainer: { 
-    
+    inputContainer: {
+
     },
 
 });
